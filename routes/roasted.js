@@ -8,4 +8,11 @@ router.get('/', function(req, res, next) {
 });
 
 
+//var express = require('express');
+const roasted_controlers= require('../controllers/roasted');
+var router = express.Router();
+/* GET costumes */
+router.get('/', roasted_controlers.roasted_view_all_Page );
+module.exports = router;
+
 module.exports = router;
