@@ -43,26 +43,26 @@ async function recreateDB(){
   console.log("First object saved")
   });
 
-  let instance2 = new roasted({Itemname:"roasted sandwich grill", Quantity:60,
-  price:"sixteen USD"});
+  let instance2 = new roasted({Itemname:"roasted chicken", Quantity:73,
+  price:"nine USD"});
    instance2.save( function(err,doc) {
    if(err) return console.error(err);
    console.log("second object saved")
    });
 
-   let instance3 = new roasted({Itemname:"roasted chicken sandwich", Quantity:190,
-   price:"Twenty USD"});
+   let instance3 = new roasted({Itemname:"roasted lamb", Quantity:10,
+   price:"Twenty  USD"});
     instance3.save( function(err,doc) {
     if(err) return console.error(err);
     console.log("third object saved")
     });
 
-    let instance4 = new roasted({Itemname:"roasted grill chicken sandwich", Quantity:86,
-    price:"twenty five USD"});
-     instance4.save( function(err,doc) {
-     if(err) return console.error(err);
-     console.log(" fourth object saved")
-     });
+   // let instance4 = new roasted({Itemname:"roasted grill chicken sandwich", Quantity:86,
+   // price:"twenty five USD"});
+   //  instance4.save( function(err,doc) {
+   //  if(err) return console.error(err);
+   //  console.log(" fourth object saved")
+  //   });
  }
 
 

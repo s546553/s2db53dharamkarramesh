@@ -1,4 +1,4 @@
-var Rosted = require('../models/roasted');
+var roasted = require('../models/roasted');
 // List of all roasted items
 exports.roasted_list = function(req, res) {
  res.send('NOT IMPLEMENTED: roasted list');
@@ -19,3 +19,16 @@ exports.roasted_delete = function(req, res) {
 exports.roasted_update_put = function(req, res) {
  res.send('NOT IMPLEMENTED: roasted  update PUT' + req.params.id);
 };
+
+
+// List of all Costumes
+exports.roasted_list = async function(req, res) {
+    try{
+    theRoasted = await roasted.find();
+    res.send(theRoasted);
+    }
+    catch(err){
+    res.status(500);
+    res.send(`{"error": ${err}}`);
+    }
+   };
