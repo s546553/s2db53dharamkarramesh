@@ -53,9 +53,22 @@ exports.roasted_create_post = async function(req, res) {
 
 
 // Handle Costume delete form on DELETE.
+/**
 exports.roasted_delete = function(req, res) {
  res.send('NOT IMPLEMENTED: roasted  delete DELETE ' + req.params.id);
 };
+ */
+exports.roasted_delete = async function(req, res) {
+    console.log("delete " + req.params.id)
+    try {
+    result = await roasted.findByIdAndDelete( req.params.id)
+    console.log("Removed " + result)
+    res.send(result)
+    } catch (err) {
+    res.status(500)
+    res.send(`{"error": Error deleting ${err}}`);
+    }
+   };
 
 
 // Handle Costume update form on PUT.
