@@ -56,9 +56,33 @@ exports.roasted_create_post = async function(req, res) {
 exports.roasted_delete = function(req, res) {
  res.send('NOT IMPLEMENTED: roasted  delete DELETE ' + req.params.id);
 };
+
+
 // Handle Costume update form on PUT.
+/** 
 exports.roasted_update_put = function(req, res) {
  res.send('NOT IMPLEMENTED: roasted  update PUT' + req.params.id);
+};
+*/
+
+exports.roasted_update_put = async function(req, res) {
+console.log(`update on id ${req.params.id} with body
+${JSON.stringify(req.body)}`)
+ try {
+ let toUpdate = await roasted.findById( req.params.id)
+ // Do updates of properties
+ if(req.body.roasted_type)
+ toUpdate.roasted_type = req.body.roasted_type;
+ if(req.body.cost) toUpdate.price = req.body.price;
+ if(req.body.size) toUpdate.Quantity = req.body.Quantity;
+ let result = await toUpdate.save();
+ console.log("Sucess " + result)
+ res.send(result)
+ } catch (err) {
+ res.status(500)
+ res.send(`{"error": ${err}: Update for id ${req.params.id}
+failed`);
+ }
 };
 
 
