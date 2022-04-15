@@ -52,10 +52,10 @@ async function recreateDB(){
 
    let instance3 = new roasted({Itemname:"roasted lamb", Quantity:10,
    price:"Twenty  USD"});
-    instance3.save( function(err,doc) {
-    if(err) return console.error(err);
-    console.log("third object saved")
-    });
+   instance3.save( function(err,doc) {
+   if(err) return console.error(err);
+   console.log("third object saved")
+   });
 
    // let instance4 = new roasted({Itemname:"roasted grill chicken sandwich", Quantity:86,
    // price:"twenty five USD"});
