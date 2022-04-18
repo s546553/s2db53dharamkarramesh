@@ -16,3 +16,6 @@ router.get('/', roasted_controlers.roasted_view_all_Page );
 module.exports = router;
 
 module.exports = router;
+
+/* GET detail bakery page */
+router.get('/detail', bakery_controlers.bakery_view_one_Page);
