@@ -18,4 +18,4 @@ module.exports = router;
 module.exports = router;
 
 /* GET detail bakery page */
-router.get('/detail', bakery_controlers.bakery_view_one_Page);
+router.get('/detail', roasted_controlers.roasted_view_one_Page);
