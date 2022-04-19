@@ -31,3 +31,11 @@ router.get('/detail', roasted_controlers.roasted_view_one_Page);
 
 /* GET create bakery page */
 router.get('/create',secured, roasted_controlers.roasted_create_Page);
+
+/* GET create update page */
+router.get('/update',secured, roasted_controlers.roasted_update_Page);
+
+/* GET create bakery page */
+router.get('/delete',secured, roasted_controlers.roasted_delete_Page);
+
+
