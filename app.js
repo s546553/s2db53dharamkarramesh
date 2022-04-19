@@ -4,12 +4,35 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
+var passport = require('passport');
+var LocalStrategy = require('passport-local').Strategy;
+
+passport.use(new LocalStrategy(
+  function(username, password, done) {
+    Account.findOne({ username: username }, function (err, user) {
+      if (err) { return done(err); }
+      if (!user) {
+        return done(null, false, { message: 'Incorrect username.' });
+      }
+      if (!user.validPassword(password)) {
+        return done(null, false, { message: 'Incorrect password.' });
+      }
+      return done(null, user);
+    });
+  }));
+
+  /*
 const connectionString =
 process.env.MONGO_CON
 mongoose = require('mongoose');
 mongoose.connect(connectionString,
 {useNewUrlParser: true,
 useUnifiedTopology: true});
+*/
+const connectionString = process.env.MONGO_CON
+mongoose = require('mongoose');
+mongoose.connect(connectionString,
+{useNewUrlParser: true, useUnifiedTopology: true});
 
 //Get the default connection
 var db = mongoose.connection;
@@ -18,7 +41,7 @@ db.on('error', console.error.bind(console, 'MongoDB connectionerror:'));
 db.once("open", function(){
 console.log("Connection to DB succeeded")});
 
-var roasted = require("./models/roasted");
+
 
 
 var indexRouter = require('./routes/index');
@@ -27,6 +50,7 @@ var roastedRouter = require('./routes/roasted');
 var addmodsRouter = require('./routes/addmods');
 var selectorRouter = require('./routes/selector');
 var resourceRouter = require('./routes/resource');
+var roasted = require("./models/roasted");
 
 
 // We can seed the collection if needed on

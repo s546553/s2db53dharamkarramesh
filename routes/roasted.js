@@ -33,7 +33,7 @@ router.get('/', function(req, res, next) {
 
 
 //var express = require('express');
-const roasted_controlers= require('../controllers/roasted');
+//const roasted_controlers= require('../controllers/roasted');
 var router = express.Router();
 /* GET costumes */
 router.get('/', roasted_controlers.roasted_view_all_Page );
@@ -45,12 +45,16 @@ module.exports = router;
 router.get('/detail', roasted_controlers.roasted_view_one_Page);
 
 /* GET create bakery page */
-router.get('/create',secured, roasted_controlers.roasted_create_Page);
+//router.get('/create',secured, roasted_controlers.roasted_create_Page);
+router.get('/create',roasted_controlers.roasted_create_Page);
+
 
 /* GET create update page */
-router.get('/update',secured, roasted_controlers.roasted_update_Page);
+//router.get('/update',secured, roasted_controlers.roasted_update_Page);
+router.get('/update',roasted_controlers.roasted_update_Page);
 
 /* GET create bakery page */
-router.get('/delete',secured, roasted_controlers.roasted_delete_Page);
+//router.get('/delete',secured, roasted_controlers.roasted_delete_Page);
 
+router.get('/delete',roasted_controlers.roasted_delete_Page);
 
