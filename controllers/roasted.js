@@ -171,7 +171,7 @@ exports.roasted_create_Page = function(req, res) {
 
 // Handle building the view for updating a fish.
 // query provides the id
-/*
+
 exports.roasted_update_Page =  async function(req, res) {
     console.log("update view for item "+req.query.id)
     try{
@@ -184,7 +184,7 @@ exports.roasted_update_Page =  async function(req, res) {
     }
 };
 
-*/
+
 
 // Handle a delete one view with id from query
 exports.roasted_delete_Page = async function(req, res) {
