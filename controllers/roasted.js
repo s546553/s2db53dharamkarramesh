@@ -185,17 +185,30 @@ exports.roasted_create_Page = function(req, res) {
 // Handle building the view for updating a fish.
 // query provides the id
 
-exports.roasted_update_Page =  async function(req, res) {
+// exports.roasted_update_Page =  async function(req, res) {
+//     console.log("update view for item "+req.query.id)
+//     try{
+//         let result = await roasted.findById(req.query.id)
+//         res.render('roastedupdate', { title: 'roasted Update', toShow: result });
+//     }
+//     catch(err){
+//         res.status(500)
+//         res.send(`{'error': '${err}'}`);
+        
+//     }
+
+// };
+exports.roasted_update_Page = async function(req, res) {
     console.log("update view for item "+req.query.id)
     try{
-        let result = await roasted.findById(req.query.id)
-        res.render('roastedupdate', { title: 'roasted Update', toShow: result });
+    let result = await roasted.findById(req.query.id)
+    res.render('roastedupdate', { title: 'Roasted Update', toShow: result });
     }
     catch(err){
-        res.status(500)
-        
+    res.status(500)
+    //res.send(`{'error': '${err}'}`);
     }
-};
+   };
 
 
 
