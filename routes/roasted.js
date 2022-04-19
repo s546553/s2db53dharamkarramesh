@@ -2,10 +2,19 @@ var express = require('express');
 var router = express.Router();
 
 
+const secured = (req, res, next) => {
+  if (req.user){
+      return next();
+  }
+  req.session.returnTo = req.originalUrl;
+  res.redirect("/login");
+}
+
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('roasted', { title: 'Search Results roasted class' });
 });
+
 
 
 //var express = require('express');
