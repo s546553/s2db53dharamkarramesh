@@ -1,3 +1,4 @@
+/*
 var express = require('express');
 var router = express.Router();
 
@@ -8,6 +9,20 @@ const secured = (req, res, next) => {
   }
   req.session.returnTo = req.originalUrl;
   res.redirect("/login");
+}
+*/
+var express = require('express');
+const roasted_controlers= require('../controllers/roasted');
+var router = express.Router();
+
+// A little function to check if we have an authorized user and continue on
+//or redirect to login.
+const secured = (req, res, next) => {
+    if (req.user){
+        return next();
+    }
+    req.session.returnTo = req.originalUrl;
+    res.redirect("/login");
 }
 
 /* GET home page. */
