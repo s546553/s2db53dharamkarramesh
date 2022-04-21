@@ -6,22 +6,22 @@ block content
   if (toShow == null)
     h2 No instance to delete
   else
-    - let bakeryid = toShow._id
-    - let bakeryItemname = toShow.Itemname
-    - let bakeryQuantity = toShow.Quantity
-    - let bakeryprice = toShow.price
+    - let roastedid = toShow._id
+    - let roastedItemname = toShow.Itemname
+    - let roastedQuantity = toShow.Quantity
+    - let roastedprice = toShow.price
 
     div
       div.row
-        div(class='costumeAttr mr-3') bakery ID is:
-        div(class='variety stylesheetnew') #{bakeryid}
+        div(class='roastedAttr mr-3') Roasted ID is:
+        div(class='variety stylesheetnew') #{roastedid}
       div.row
-        div(class='costumeAttr mr-3') bakery Itemname is:
-        div(class="variety") #{bakeryItemname}
+        div(class='roastedAttr mr-3') Roasted Itemname is:
+        div(class="variety") #{roastedItemname}
       div.row
-        div(class='costumeAttr mr-3') bakery Quantity is:
-        div(class="variety") #{bakeryQuantity}
+        div(class='roastedAttr mr-3') Roasted Quantity is:
+        div(class="variety") #{roastedQuantity}
       div.row
-        div(class='costumeAttr mr-3') bakery price is:
-        div(class="variety") #{bakeryprice}
+        div(class='roastedAttr mr-3') Roasted price is:
+        div(class="variety") #{roastedprice}
     
