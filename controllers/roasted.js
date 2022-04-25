@@ -1,21 +1,24 @@
+/*
 var roasted = require('../models/roasted');
 // List of all roasted items
 exports.roasted_list = function(req, res) {
  res.send('NOT IMPLEMENTED: roasted list');
 };
 
-/**
- *exports.costume_detail = async function(req, res) {
- console.log("detail" + req.params.id)
- try {
- result = await Costume.findById( req.params.id)
- res.send(result)
- } catch (error) {
- res.status(500)
- res.send(`{"error": document for id ${req.params.id} not found`);
- }
+*/
+var roasted = require('../models/roasted');
+// List of all bakerys
+exports.roasted_list = async function(req, res) {
+    try{
+        theroasted = await roasted.find();
+        res.send(theroasted);
+    }
+    catch(err){
+        res.error(500,`{"error": ${err}}`);
+    }
+    
 };
- */
+
 // for a specific Roasted item.
 exports.roasted_detail = async function(req, res) {
     console.log("detail" + req.params.id)
@@ -27,7 +30,7 @@ exports.roasted_detail = async function(req, res) {
     res.send(`{"error": document for id ${req.params.id} not found`);
     }
    };
-// Handle rroasted  create on POST.
+
 
 
 // Handle Costume create on POST.
@@ -53,11 +56,7 @@ exports.roasted_create_post = async function(req, res) {
 
 
 // Handle Costume delete form on DELETE.
-/**
-exports.roasted_delete = function(req, res) {
- res.send('NOT IMPLEMENTED: roasted  delete DELETE ' + req.params.id);
-};
- */
+
 exports.roasted_delete = async function(req, res) {
     console.log("delete " + req.params.id)
     try {
@@ -72,11 +71,7 @@ exports.roasted_delete = async function(req, res) {
 
 
 // Handle Costume update form on PUT.
-/** 
-exports.roasted_update_put = function(req, res) {
- res.send('NOT IMPLEMENTED: roasted  update PUT' + req.params.id);
-};
-*/
+
 
 exports.roasted_update_put = async function(req, res) {
 console.log(`update on id ${req.params.id} with body
@@ -123,18 +118,6 @@ exports.roasted_view_all_Page = async function(req, res) {
     res.send(`{"error": ${err}}`);
     }
    };
-/*
-   exports.bakery_view_all_Page = async function (req, res) {
-    try {
-        thebakery = await bakery.find();
-        res.render('bakery', { title: 'bakery Search Results', results: thebakery });
-    }
-    catch (err) {
-        res.send(`{"error": ${err}}`)
-        res.status(500);
-    }
-};
-*/
 
 // Handle a show one view with id specified by query
 exports.roasted_view_one_Page = async function(req, res) {
@@ -150,21 +133,6 @@ exports.roasted_view_one_Page = async function(req, res) {
 };
 
 
-
-// Handle building the view for creating a costume.
-// No body, no in path parameter, no query.
-// Does not need to be async
-
-// exports.costume_create_Page = function(req, res) {
-//     console.log("create view")
-//     try{
-//     res.render('costumecreate', { title: 'Costume Create'});
-//     }
-//     catch(err){
-//     res.status(500)
-//     res.send(`{'error': '${err}'}`);
-//     }
-//    }
 
 
 
@@ -182,22 +150,6 @@ exports.roasted_create_Page = function(req, res) {
 
 
 
-// Handle building the view for updating a fish.
-// query provides the id
-
-// exports.roasted_update_Page =  async function(req, res) {
-//     console.log("update view for item "+req.query.id)
-//     try{
-//         let result = await roasted.findById(req.query.id)
-//         res.render('roastedupdate', { title: 'roasted Update', toShow: result });
-//     }
-//     catch(err){
-//         res.status(500)
-//         res.send(`{'error': '${err}'}`);
-        
-//     }
-
-// };
 exports.roasted_update_Page = async function(req, res) {
     console.log("update view for item "+req.query.id)
     try{

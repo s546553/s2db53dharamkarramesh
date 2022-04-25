@@ -21,18 +21,18 @@ var LocalStrategy = require('passport-local').Strategy;
     });
    }));
 
- 
+/* 
 const connectionString =
 process.env.MONGO_CON
 mongoose = require('mongoose');
 mongoose.connect(connectionString,
 {useNewUrlParser: true,
-useUnifiedTopology: true});
+useUnifiedTopology: true});*/
 
-// const connectionString = process.env.MONGO_CON
-// mongoose = require('mongoose');
-// mongoose.connect(connectionString,
-// {useNewUrlParser: true, useUnifiedTopology: true});
+const connectionString = process.env.MONGO_CON
+ mongoose = require('mongoose');
+ mongoose.connect(connectionString,
+   {useNewUrlParser: true, useUnifiedTopology: true});
 
 //Get the default connection
 var db = mongoose.connection;
@@ -114,6 +114,7 @@ app.use(require('express-session')({
  }));
  app.use(passport.initialize());
  app.use(passport.session());
+
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
@@ -123,7 +124,6 @@ app.use('/addmods', addmodsRouter);
 app.use('/selector', selectorRouter);
 app.use('/resource', resourceRouter);
 
-//
 // passport config
 // Use the existing connection
 // The Account model
@@ -131,9 +131,6 @@ var Account =require('./models/account');
 passport.use(new LocalStrategy(Account.authenticate()));
 passport.serializeUser(Account.serializeUser());
 passport.deserializeUser(Account.deserializeUser());
-
-
-
 
 
 // catch 404 and forward to error handler
@@ -153,3 +150,10 @@ app.use(function(err, req, res, next) {
 });
 
 module.exports = app;
+
+//Get the default connection
+var db = mongoose.connection;
+//Bind connection to error event
+db.on('error', console.error.bind(console, 'MongoDB connection error:'));
+db.once("open", function(){
+console.log("Connection to DB succeeded")});

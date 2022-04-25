@@ -5,11 +5,11 @@ var Account = require('../models/account');
 
 /* GET home page. */
 router.get('/', function(req, res) {
-  res.render('index', { title: 'Roasted Items App', user:req.user });
+  res.render('index', { title: 'roasted App', user:req.user });
 });
 
 router.get('/register', function(req, res) {
-  res.render('register', { title: 'Roasted Items App Registration'});
+  res.render('register', { title: 'roasted App Registration'});
   });
 
 router.post('/register', function(req, res) {
@@ -37,7 +37,7 @@ router.post('/register', function(req, res) {
 })
 
 router.get('/login', function(req, res) {
-  res.render('login', { title: 'Roasted App Login', user : req.user });
+  res.render('login', { title: 'roasted App Login', user : req.user });
 });
 router.post('/login', passport.authenticate('local'), function(req, res) {
   if(req.session.returnTo)

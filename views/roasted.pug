@@ -34,23 +34,23 @@
 //-         }
  
   
-  extends layout
+extends layout
 
 block content
   - let create = `dispatch(\"roasted/create\")`
-     //button.btn(class="btn-primary m1-1", onclick=create) Create
+     button.btn(class="btn-primary m1-1", onclick=create) Create
   h1= title
   - let roasted=results;
   div(class="container-fluid mt-3")
    div(class="row m-1")
     each element in roasted
      - let destination=`buy(\"/roasted/update?id=${element._id}\")`
-     //- let detail=`buy(\"/roasted/detail?id=${element._id}\")`
-     //- let del=`buy(\"/roasted/delete?id=${element._id}\")`
+     - let detail=`buy(\"/roasted/detail?id=${element._id}\")`
+     - let del=`buy(\"/roasted/delete?id=${element._id}\")`
      div(class="col-sm-6 bg-secondary m-1 p-3") Roasted #{element.Itemname} - #{element.Quantity} - #{element.price}
         button.btn( class="btn-info ml-2", onclick=destination ) Update
-     // button.btn( class="btn-dark ml-2", onclick=detail ) Get Detail
-     // button.btn( class="btn-warning ml-2", onclick=del ) Delete
+        button.btn( class="btn-dark ml-2", onclick=detail ) Get Detail
+        button.btn( class="btn-warning ml-2", onclick=del ) Delete
   
    script.
     function buy(path){
